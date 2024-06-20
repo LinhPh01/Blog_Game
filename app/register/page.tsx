@@ -1,6 +1,6 @@
 "use client";
 
-import Input from "@/components/Input";
+import Input from "@/components/input/Input";
 import { FormEvent, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -46,7 +46,7 @@ export default function page() {
     <form className=" text-center" onSubmit={onSubmit}>
       <div className="flex flex-col justify-center h-[450px] w-[350px] mx-auto gap-2">
         <Input
-          placehoder="Name"
+          placeholder="Name"
           name="name"
           id="name"
           type="text"
@@ -54,7 +54,7 @@ export default function page() {
           value={state.name}
         />
         <Input
-          placehoder="Email"
+          placeholder="Email"
           name="email"
           id="email"
           type="email"
@@ -62,7 +62,7 @@ export default function page() {
           value={state.email}
         />
         <Input
-          placehoder="Password"
+          placeholder="Password"
           name="password"
           id="password"
           type="password"

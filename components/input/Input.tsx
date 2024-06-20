@@ -7,7 +7,7 @@ interface InputProps {
   name: string;
   textarea?: boolean;
   id: string;
-  placehoder?: string;
+  placeholder?: string;
   big?: boolean;
 }
 
@@ -18,7 +18,7 @@ export default function Input({
   name,
   textarea,
   id,
-  placehoder,
+  placeholder,
   big,
 }: InputProps) {
   return (
@@ -28,10 +28,10 @@ export default function Input({
       onChange={onChange}
       name={name}
       id={id}
-      placeholder={placehoder}
+      placeholder={placeholder}
       className={`w-full p-4 pt-6 font-light bg-white border-2 outline-none text-black ${
-        big ? "w-[400px] pb-[6rem]" : ""
-      }`}
+        textarea ? "w-700px h-500px" : "w-full"
+      } ${big ? "w-[400px] pb-[6rem]" : ""}`}
     />
   );
 }

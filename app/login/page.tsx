@@ -1,18 +1,21 @@
 "use client";
 
-import Input from "@/components/Input";
+import Input from "@/components/input/Input";
 import { FormEvent, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+import { string } from "prop-types";
 
 interface InitialStateProps {
+  name: string;
   email: string;
   password: string;
 }
 
 const initialState: InitialStateProps = {
+  name: "",
   email: "",
   password: "",
 };
@@ -41,7 +44,7 @@ export default function page() {
     <form className=" text-center" onSubmit={onSubmit}>
       <div className="flex flex-col justify-center h-[450px] w-[350px] mx-auto gap-2">
         <Input
-          placehoder="Email"
+          placeholder="Email"
           name="email"
           id="email"
           type="email"
@@ -49,7 +52,7 @@ export default function page() {
           value={state.email}
         />
         <Input
-          placehoder="Password"
+          placeholder="Password"
           name="password"
           id="password"
           type="password"
