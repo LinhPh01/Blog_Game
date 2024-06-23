@@ -1,18 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:100&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.nav-open {
-  visibility: visible;
-  transform: translateX(0%);
-  opacity: 1;
-  transition: visibility 0s, opacity 0.3s linear, transform 0.3s ease-in-out;
+.nav-link {
+  @apply relative ml-10 text-gray-500 font-mono font-bold tracking-[1px] hover:text-blue-400;
 }
 
-.nav-closed {
-  visibility: hidden;
-  transform: translateX(-100%);
-  opacity: 0;
-  transition: visibility 0s 0.3s, opacity 0.3s linear,
-    transform 0.3s ease-in-out;
+.nav-link::after {
+  @apply content-[''] bg-blue-400 h-[3px] w-[0%] left-0 -bottom-[5px] rounded-xl absolute duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-[100%];
+}
+
+.bg-color {
+  background-color: #111111;
 }
