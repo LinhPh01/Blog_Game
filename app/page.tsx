@@ -2,18 +2,20 @@ import Image from "next/image";
 import getCurrentUser from "./actions/getCurrentUser";
 import getBlogs from "./actions/getBlogs";
 import SingleBlog from "@/components/blog/SingleBlog";
+import Welcome from "@/components/body/welcome";
 
 export default async function Home() {
   const currentUser = await getCurrentUser();
   const blogs = await getBlogs();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {blogs.map((item: any) => (
-        <SingleBlog data={item} key={item.id} currentUser={currentUser} />
-      ))}
-    </main>
+    <div className="overflow-x-hidden">
+      <div>
+        <Welcome />
+        {blogs.map((item: any) => (
+          <SingleBlog data={item} key={item.id} currentUser={currentUser} />
+        ))}
+      </div>
+    </div>
   );
 }
-
-// test file
