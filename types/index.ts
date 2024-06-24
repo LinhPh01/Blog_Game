@@ -18,6 +18,6 @@ export type SafeUser = Omit<
   emailVerified: string | null;
 };
 
-export type SafeBlogs = Omit<Blog, "createAt"> & {
-  createAt: string;
+export type SafeBlogs = Omit<Blog, "createdAt"> & {
+  createdAt: string;
 };

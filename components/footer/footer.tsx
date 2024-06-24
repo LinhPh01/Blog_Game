@@ -7,7 +7,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="pt-8 pb-4 bg-[#02050a]">
+    <div className="pt-8 pb-4 bg-color">
       <div className="grid border-b-1 pb-6 border-gray-400 grid-cols-1 lg:grid-cols-3 md:grid-cols-2 w-11/12 mx-auto lg:w-4/5 gap-6 md:gap-3">
         <div className="flex items-center space-x-6">
           <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-[#60A5FA]">
