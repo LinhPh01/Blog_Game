@@ -18,7 +18,7 @@ export default function Outstanding({ data }: BlogProps) {
           src={data.imageSrc}
           alt="blog"
           layout="fill"
-          className="object-cover"
+          className="object-cover transform transition duration-500 hover:scale-110 flex justify-center items-center"
         />
       </div>
       <div className="w-[90%] text-center mx-auto bg-[#071225] relative p-[2rem] mt-[-1rem]">

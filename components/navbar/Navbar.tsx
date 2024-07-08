@@ -2,7 +2,7 @@
 
 // import getCurrentUser from "@/app/actions/getCurrentUser";
 import { Bars3Icon } from "@heroicons/react/20/solid";
-import { XMarkIcon } from "@heroicons/react/20/solid";
+import bg from "../../public/images/bg-2.jpg";
 import { SafeUser } from "@/types";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
@@ -25,69 +25,86 @@ export default function Navbar({ currentUser }: UserMenuProps) {
   return (
     <section className="sticky top-0 left-0 right-0 z-50">
       <header>
-        <nav className="bg-color relative flex items-center px-4 py-4 h-full">
+        <nav className="bg-color relative flex items-center px-4 py-3 h-full">
           <div
             className={`${
               isOpen ? "hidden" : "block"
-            }  rounded-md px-4 border-2 border-yellow-400 text-yellow-400`}
+            }  px-2 py-2 rounded-full border-2 border-yellow-400 text-yellow-400`}
           >
             {currentUser?.name}
           </div>
           {/* open button */}
-          <div className="md:hidden absolute flex items-center top-0 right-0 px-4 py-2">
-            <button onClick={openNavbar} className="focus:outline-none">
-              {isOpen ? (
-                <XMarkIcon className="h-10 w-10 border-2 border-blue-600 rounded-xl text-blue-600" />
-              ) : (
+          <div className="flex items-center justify-between w-full">
+            <div className="flex-1">
+              {/* Logo hoặc bất kỳ thành phần nào khác */}
+            </div>
+            <div className="md:hidden">
+              <button onClick={openNavbar} className="focus:outline-none">
                 <Bars3Icon className="h-10 w-10 border-2 border-blue-600 rounded-xl text-blue-600" />
-              )}
-            </button>
-          </div>
-          <div
-            className={`${
-              isOpen ? "flex" : "hidden"
-            } md:flex flex-col md:flex-row items-center w-full h-full justify-center mt-4 md:mt-0`}
-          >
-            <Link href="/" className="nav-link px-4 py-4" onClick={closeNavbar}>
-              Home
-            </Link>
-            <Link
-              href="/blogsingle"
-              className="nav-link px-4 py-4"
-              onClick={closeNavbar}
-            >
-              Blog
-            </Link>
-            <Link
-              href="/create"
-              className="nav-link px-4 py-4"
-              onClick={closeNavbar}
-            >
-              Create
-            </Link>
-            <Link
-              href="/login"
-              className="nav-link px-4 py-4"
-              onClick={closeNavbar}
-            >
-              Login
-            </Link>
-
-            {currentUser ? (
-              <button
-                onClick={() => signOut()}
-                className="nav-link px-4 py-4 focus:outline-none"
-              >
-                Sign out
               </button>
-            ) : (
+            </div>
+            <div
+              className={`${
+                isOpen ? "flex" : "hidden"
+              } absolute  top-16 left-0 right-0 md:static md:flex flex-col md:flex-row items-center w-full bg-mobile md:w-auto justify-center  md:bg-transparent`}
+            >
               <Link
-                href="/register"
-                className="nav-link px-4 py-4 focus:outline-none"
+                href="/"
+                className="nav-link my-2 md:my-0"
+                onClick={closeNavbar}
               >
-                Register
+                <div className="flex items-center justify-center before:ease relative h-12 w-40 overflow-hidden border-b-0 border-white text-white shadow-2xl transition-all before:absolute before:top-1/2 before:h-0 before:w-64 before:origin-center before:-translate-x-20 before:rotate-45 before:bg-white before:duration-300 hover:text-black hover:shadow-white hover:before:h-64 hover:before:-translate-y-32">
+                  <span className="relative z-10">Home</span>
+                </div>
               </Link>
-            )}
+              <Link
+                href="/blogsingle"
+                className="nav-link my-2 md:my-0 "
+                onClick={closeNavbar}
+              >
+                <div className="flex items-center justify-center before:ease relative h-12 w-40 overflow-hidden border-b-0 border-white text-white shadow-2xl transition-all before:absolute before:top-1/2 before:h-0 before:w-64 before:origin-center before:-translate-x-20 before:rotate-45 before:bg-white before:duration-300 hover:text-black hover:shadow-white hover:before:h-64 hover:before:-translate-y-32">
+                  <span className="relative z-10">Blog</span>
+                </div>
+              </Link>
+              <Link
+                href="/create"
+                className="nav-link my-2 md:my-0"
+                onClick={closeNavbar}
+              >
+                <div className="flex items-center justify-center before:ease relative h-12 w-40 overflow-hidden border-b-0 border-white text-white shadow-2xl transition-all before:absolute before:top-1/2 before:h-0 before:w-64 before:origin-center before:-translate-x-20 before:rotate-45 before:bg-white before:duration-300 hover:text-black hover:shadow-white hover:before:h-64 hover:before:-translate-y-32 ">
+                  <span className="relative z-10">Create</span>
+                </div>
+              </Link>
+              <Link
+                href="/login"
+                className="nav-link my-2 md:my-0"
+                onClick={closeNavbar}
+              >
+                <div className="flex items-center justify-center before:ease relative h-12 w-40 overflow-hidden border-b-0 border-white text-white shadow-2xl transition-all before:absolute before:top-1/2 before:h-0 before:w-64 before:origin-center before:-translate-x-20 before:rotate-45 before:bg-white before:duration-300 hover:text-black hover:shadow-white hover:before:h-64 hover:before:-translate-y-32">
+                  <span className="relative z-10">Login</span>
+                </div>
+              </Link>
+
+              {currentUser ? (
+                <button
+                  onClick={() => signOut()}
+                  className="nav-link focus:outline-none my-2 md:my-0"
+                >
+                  <div className="flex items-center justify-center before:ease relative h-12 w-40 overflow-hidden border-b-0 border-white text-white shadow-2xl transition-all before:absolute before:top-1/2 before:h-0 before:w-64 before:origin-center before:-translate-x-20 before:rotate-45 before:bg-white before:duration-300 hover:text-black hover:shadow-white hover:before:h-64 hover:before:-translate-y-32">
+                    <span className="relative z-10">Sign out</span>
+                  </div>
+                </button>
+              ) : (
+                <Link
+                  href="/register"
+                  className="nav-link focus:outline-none my-2 md:my-0 "
+                >
+                  <div className="flex items-center justify-center before:ease relative h-12 w-40 overflow-hidden border-b-0 border-white text-white shadow-2xl transition-all before:absolute before:top-1/2 before:h-0 before:w-64 before:origin-center before:-translate-x-20 before:rotate-45 before:bg-white before:duration-300 hover:text-black hover:shadow-white hover:before:h-64 hover:before:-translate-y-32">
+                    <span className="relative z-10">Register</span>
+                  </div>
+                </Link>
+              )}
+            </div>
           </div>
         </nav>
       </header>

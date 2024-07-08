@@ -29,7 +29,7 @@ export default function Input({
       name={name}
       id={id}
       placeholder={placeholder}
-      className={`w-full p-4 pt-6 font-light bg-white border-2 outline-none text-black ${
+      className={`w-full p-4 font-light bg-white border-2 outline-none text-black rounded-3xl ${
         textarea ? "w-700px h-500px" : "w-full"
       } ${big ? "w-[400px] pb-[6rem]" : ""}`}
     />
