@@ -1,8 +1,9 @@
 import bcrypt from "bcrypt";
-import NextAuth, { AuthOptions } from "next-auth";
+// import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "../../../lib/prismadb";
+import NextAuth, { AuthOptions } from "next-auth";
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -40,6 +41,31 @@ export const authOptions: AuthOptions = {
   ],
   pages: {
     signIn: "/",
+  },
+  callbacks: {
+    session: ({ session, token }) => {
+      console.log("Session Callback", { session, token });
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.id,
+          randomKey: token.randomKey,
+        },
+      };
+    },
+    jwt: ({ token, user }) => {
+      console.log("JWT Callback", { token, user });
+      if (user) {
+        const u = user as unknown as any;
+        return {
+          ...token,
+          id: u.id,
+          randomKey: u.randomKey,
+        };
+      }
+      return token;
+    },
   },
   debug: process.env.NODE_ENV === "development",
   session: {
