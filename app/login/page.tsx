@@ -21,7 +21,7 @@ const initialState: InitialStateProps = {
   password: "",
 };
 
-export default function page() {
+export default function Page() {
   const [state, setState] = useState(initialState);
   const router = useRouter();
   function handleChange(e: any) {
@@ -81,7 +81,7 @@ export default function page() {
               <span className="relative z-10">Login</span>
             </button>
             <div className="text-white">
-              Haven't you have an acccount yet ?{" "}
+              Haven&apos;t you had an account yet?{" "}
               <Link href="/register">Register</Link>
             </div>
           </div>

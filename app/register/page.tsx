@@ -19,7 +19,7 @@ const initialState: InitialStateProps = {
   password: "",
 };
 
-export default function page() {
+export default function Page() {
   const [state, setState] = useState(initialState);
   const router = useRouter();
   function handleChange(e: any) {
