@@ -3,7 +3,24 @@ import bcrypt from "bcrypt";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "../../../lib/prismadb";
+import { NextApiResponse, NextApiRequest } from "next";
 import NextAuth, { AuthOptions } from "next-auth";
+
+// export default (req: NextApiRequest, res: NextApiResponse) =>
+//   NextAuth(req, res, authOptions);
+
+// Define the type for the entry configuration
+type TEntry = {
+  GET?: Function;
+  POST?: Function;
+  PUT?: Function;
+  DELETE?: Function;
+  PATCH?: Function;
+  config?: {};
+  generateStaticParams?: Function;
+  revalidate?: boolean; // Adjust as per your specific needs
+  // Add other properties as needed
+};
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -42,31 +59,6 @@ export const authOptions: AuthOptions = {
   pages: {
     signIn: "/",
   },
-  callbacks: {
-    session: ({ session, token }) => {
-      console.log("Session Callback", { session, token });
-      return {
-        ...session,
-        user: {
-          ...session.user,
-          id: token.id,
-          randomKey: token.randomKey,
-        },
-      };
-    },
-    jwt: ({ token, user }) => {
-      console.log("JWT Callback", { token, user });
-      if (user) {
-        const u = user as unknown as any;
-        return {
-          ...token,
-          id: u.id,
-          randomKey: u.randomKey,
-        };
-      }
-      return token;
-    },
-  },
   debug: process.env.NODE_ENV === "development",
   session: {
     strategy: "jwt",
@@ -74,5 +66,8 @@ export const authOptions: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
 };
 
-const handler = NextAuth(authOptions);
+const handler = (req: NextApiRequest, res: NextApiResponse) =>
+  NextAuth(req, res, authOptions);
+
+// Export the handler for GET and POST methods
 export { handler as GET, handler as POST };
