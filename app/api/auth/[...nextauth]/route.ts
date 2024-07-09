@@ -1,15 +1,17 @@
 import bcrypt from "bcrypt";
-// import NextAuth, { AuthOptions } from "next-auth";
+import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import GithubProvider from "next-auth/providers/github";
 import prisma from "../../../lib/prismadb";
-import { NextApiResponse, NextApiRequest } from "next";
-import NextAuth, { AuthOptions } from "next-auth";
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
-
   providers: [
+    GithubProvider({
+      clientId: process.env.GITHUB_ID as string,
+      clientSecret: process.env.GITHUB_SECRET as string,
+    }),
     CredentialsProvider({
       name: "credentials",
       credentials: {
@@ -20,11 +22,13 @@ export const authOptions: AuthOptions = {
         if (!credentials?.email || !credentials?.password) {
           throw new Error("Invalid credentials");
         }
+
         const user = await prisma.user.findUnique({
           where: {
             email: credentials.email,
           },
         });
+
         if (!user || !user?.hashedPassword) {
           throw new Error("Invalid credentials");
         }
@@ -43,6 +47,31 @@ export const authOptions: AuthOptions = {
   pages: {
     signIn: "/",
   },
+  callbacks: {
+    session: ({ session, token }) => {
+      console.log("Session Callback", { session, token });
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.id,
+          randomKey: token.randomKey,
+        },
+      };
+    },
+    jwt: ({ token, user }) => {
+      console.log("JWT Callback", { token, user });
+      if (user) {
+        const u = user as unknown as any;
+        return {
+          ...token,
+          id: u.id,
+          randomKey: u.randomKey,
+        };
+      }
+      return token;
+    },
+  },
   debug: process.env.NODE_ENV === "development",
   session: {
     strategy: "jwt",
@@ -50,8 +79,5 @@ export const authOptions: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
 };
 
-const handler = (req: NextApiRequest, res: NextApiResponse) =>
-  NextAuth(req, res, authOptions);
-
-// Export the handler for GET and POST methods
+const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

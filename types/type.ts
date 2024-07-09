@@ -1,12 +1,10 @@
 import { Blog, User } from "@prisma/client";
 
-// export type SafeReservation = Omit<
-//   "createdAt" | "startDate" | "endDate" | "listing"
-// > & {
+// export type SafeReservation = Omit<Reservation, "createdAt" | "startDate" | "endDate" | "listing"> & {
 //   createdAt: string;
 //   startDate: string;
 //   endDate: string;
-//   listing: SafeListing;
+//   listing: SafeBlogs;
 // };
 
 export type SafeUser = Omit<
