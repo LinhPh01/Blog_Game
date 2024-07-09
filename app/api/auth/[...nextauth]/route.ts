@@ -6,22 +6,6 @@ import prisma from "../../../lib/prismadb";
 import { NextApiResponse, NextApiRequest } from "next";
 import NextAuth, { AuthOptions } from "next-auth";
 
-// export default (req: NextApiRequest, res: NextApiResponse) =>
-//   NextAuth(req, res, authOptions);
-
-// Define the type for the entry configuration
-type TEntry = {
-  GET?: Function;
-  POST?: Function;
-  PUT?: Function;
-  DELETE?: Function;
-  PATCH?: Function;
-  config?: {};
-  generateStaticParams?: Function;
-  revalidate?: boolean; // Adjust as per your specific needs
-  // Add other properties as needed
-};
-
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
 
