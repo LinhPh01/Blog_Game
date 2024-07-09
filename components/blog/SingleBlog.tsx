@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { SafeBlogs, SafeUser } from "@/types/index";
+import { SafeBlogs, SafeUser } from "../../types/";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { BsFillPencilFill } from "react-icons/bs";
-import bg from "../../public/images/bg-5.jpg";
+import bg from "../../public/images/nen.png";
 
 interface BlogProps {
   key: string;
@@ -33,11 +33,11 @@ export default function SingleBlog({ data, key, currentUser }: BlogProps) {
 
   return (
     <div
-      className="flex items-center justify-center mx-2 py-2 max-h-screen max-w-full overflow-y-scroll bg-cover bg-fixed bg-center bg-no-repeat shadow-lg"
+      className="flex items-center justify-center mx-auto py-4 max-h-full max-w-full overflow-y-scroll bg-cover bg-fixed bg-center bg-no-repeat shadow-lg"
       style={{
         backgroundImage: `url(${bg.src})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundSize: "fill",
+        backgroundPosition: "top",
       }}
     >
       <div className="px-4 md:px-8 py-2 border-2 bg-white border-black rounded-md">

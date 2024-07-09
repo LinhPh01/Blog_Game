@@ -4,7 +4,7 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/20/solid";
 import Image from "next/image";
-import { SafeBlogs } from "@/types/index";
+import { SafeBlogs } from "../../types/";
 
 interface BlogProps {
   data: SafeBlogs;

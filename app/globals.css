@@ -35,4 +35,10 @@
 .break-words {
   word-break: break-word;
 }
+
+.imga {
+  background-image: url("../public/images/iconnen.png") !important;
+  background-size: cover;
+  background-position: center;
+}
 /* animation */

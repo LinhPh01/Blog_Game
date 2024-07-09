@@ -2,8 +2,8 @@
 
 // import getCurrentUser from "@/app/actions/getCurrentUser";
 import { Bars3Icon } from "@heroicons/react/20/solid";
-import bg from "../../public/images/bg-2.jpg";
-import { SafeUser } from "@/types";
+
+import { SafeUser } from "../../types";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
@@ -26,12 +26,15 @@ export default function Navbar({ currentUser }: UserMenuProps) {
     <section className="sticky top-0 left-0 right-0 z-50">
       <header>
         <nav className="bg-color relative flex items-center px-4 py-3 h-full">
-          <div
-            className={`${
-              isOpen ? "hidden" : "block"
-            }  px-2 py-2 rounded-full border-2 border-yellow-400 text-yellow-400`}
-          >
-            {currentUser?.name}
+          <div className="flex flex-col items-center">
+            <div className="w-12 h-12 imga" />
+            <div
+              className={`${
+                isOpen ? "hidden" : "block"
+              } bg-transparent border-yellow-400 text-yellow-400`}
+            >
+              {currentUser?.name}
+            </div>
           </div>
           {/* open button */}
           <div className="flex items-center justify-between w-full">
