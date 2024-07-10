@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-link {
+  @apply relative text-gray-500 font-mono font-bold tracking-[1px] hover:text-blue-400;
+}
+
+.nav-link::after {
+  @apply content-[''] bg-blue-400 h-[3px] w-[0%] left-0 -bottom-[5px] rounded-xl absolute duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-[100%];
+}
+
+@media (min-width: 768px) {
+  .bg-mobile {
+    background-image: none !important;
+  }
+}
+@media (max-width: 767px) {
+  .bg-mobile {
+    background-image: url("../public/images/bg-2.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Chiều cao toàn màn hình */
+  }
+}
+
+.bg-color {
+  background-color: #111111;
+}
+
+.break-words {
+  word-break: break-word;
+}
+
+.imga {
+  background-image: url("../public/images/iconnen.png") !important;
+  background-size: cover;
+  background-position: center;
+}
+/* animation */
