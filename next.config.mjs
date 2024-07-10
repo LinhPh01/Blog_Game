@@ -9,4 +9,4 @@ const nextConfig = {
   },
 };
 
-export default api;
+export default nextConfig;
