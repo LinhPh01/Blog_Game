@@ -5,6 +5,9 @@ import prisma from "../../../lib/prismadb";
 interface IParams {
   blogId?: string;
 }
+export async function generateStaticParams() {
+  return [];
+}
 
 export async function DELETE(
   request: Request,

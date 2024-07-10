@@ -4,6 +4,9 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "../../../lib/prismadb";
 
+export async function generateStaticParams() {
+  return [];
+}
 const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
 

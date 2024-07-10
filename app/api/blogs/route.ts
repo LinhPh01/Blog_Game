@@ -3,6 +3,9 @@ import { NextResponse } from "next/server";
 import prisma from "../../lib/prismadb";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 
+export async function generateStaticParams() {
+  return [];
+}
 export async function POST(request: Request) {
   const currentUser = await getCurrentUser();
 

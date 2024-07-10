@@ -5,6 +5,9 @@ import BlogId from "@/components/blog/BlogId";
 interface IParams {
   blogId: string;
 }
+export async function generateStaticParams() {
+  return [];
+}
 
 export default async function page({ params }: { params: IParams }) {
   const blog = await getBlogById(params);
