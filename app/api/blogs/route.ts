@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 
-
+import prisma from "../../lib/prismadb";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 
-import { PrismaClient } from '@prisma/client';
+// import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient();
+// const prisma = new PrismaClient();
 
 export async function generateStaticParams() {
   try {
@@ -16,8 +16,8 @@ export async function generateStaticParams() {
       params: { blogId: blog.id },
     }));
   } catch (error) {
-    console.error('Error fetching blogs:', error);
-    throw new Error('Failed to fetch blogs');
+    console.error("Error fetching blogs:", error);
+    throw new Error("Failed to fetch blogs");
   }
 }
 export async function POST(request: Request) {

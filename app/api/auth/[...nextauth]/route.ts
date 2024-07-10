@@ -49,5 +49,18 @@ const authOptions: AuthOptions = {
 };
 
 const handler = NextAuth(authOptions);
+export async function generateStaticParams() {
+  try {
+    const users = await prisma.user.findMany(); // Lấy danh sách các người dùng từ cơ sở dữ liệu
+
+    // Trả về một mảng các đối tượng, mỗi đối tượng chứa các tham số cho từng userId cụ thể
+    return users.map((user) => ({
+      params: { userId: user.id },
+    }));
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    throw new Error("Failed to fetch users");
+  }
+}
 
 export { handler as GET, handler as POST, authOptions };
