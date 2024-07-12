@@ -1,13 +1,11 @@
-// import getCurrentUser from "@/app/actions/getCurrentUser";
-import getBlogById from "../../actions/getBlogById";
-import BlogId from "../../../components/blog/BlogId";
-import React from "react";
+import getBlogById from "@/app/actions/getBlogById";
+import BlogId from "@/components/blog/BlogId";
 
 interface IParams {
   blogId: string;
 }
 
-export default async function pageblog({ params }: { params: IParams }) {
+export default async function Page({ params }: { params: IParams }) {
   const blog = await getBlogById(params);
   // const currentUser = await getCurrentUser();
   return (
