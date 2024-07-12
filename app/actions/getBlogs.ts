@@ -8,28 +8,17 @@ import prisma from "../lib/prismadb";
 
 export default async function getBlogs() {
   try {
-    // const { userId, categories } = params;
-
-    // let query: any = {};
-
-    // if (userId) {
-    //   query.userId = userId;
-    // }
-
-    // if (categories) {
-    //   query.categories = categories;
-    // }
-
     const blogs = await prisma.blog.findMany({
       orderBy: {
         createdAt: "desc",
       },
     });
 
-    const SafeBlogs = blogs.map((blog) => ({
-      ...blog,
-      createdAt: blog.createdAt.toISOString(),
+    const SafeBlogs = blogs.map((blogs) => ({
+      ...blogs,
+      createdAt: blogs.createdAt.toISOString(),
     }));
+    console.log("tets", blogs);
 
     return SafeBlogs;
   } catch (err: any) {
