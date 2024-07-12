@@ -14,11 +14,11 @@ export default async function getBlogs() {
       },
     });
 
-    const SafeBlogs = blogs.map((blogs) => ({
-      ...blogs,
-      createdAt: blogs.createdAt.toISOString(),
+    const SafeBlogs = blogs.map((blog) => ({
+      // @ts-ignore
+      ...blog,
+      createdAt: blog.createdAt.toISOString(),
     }));
-    console.log("tets", blogs);
 
     return SafeBlogs;
   } catch (err: any) {
