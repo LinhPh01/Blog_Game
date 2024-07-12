@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "npm run build && node build/index.js",
     "export": "next export",
-    "postinstall": "next build && prisma generate"
+    "postinstall": "npx prisma generate"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.4",
