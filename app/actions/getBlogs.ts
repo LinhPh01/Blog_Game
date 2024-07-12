@@ -7,14 +7,13 @@ import prisma from "../lib/prismadb";
 // }
 
 export default async function getBlogs() {
-  const Blog = await prisma.blog.findMany({
+  const blogs = await prisma.blog.findMany({
     orderBy: {
       createdAt: "desc",
     },
   });
 
-  const SafeBlogs = Blog.map((blog) => ({
-    // @ts-ignore
+  const SafeBlogs = blogs.map((blog) => ({
     ...blog,
     createdAt: blog.createdAt.toISOString(),
   }));
