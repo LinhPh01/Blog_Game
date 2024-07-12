@@ -6,7 +6,7 @@ interface IParams {
   blogId: string;
 }
 
-export default async function page({ params }: { params: IParams }) {
+export default async function pageblog({ params }: { params: IParams }) {
   const blog = await getBlogById(params);
   const currentUser = await getCurrentUser();
   return (
