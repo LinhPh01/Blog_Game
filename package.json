@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "npm run build && node build/index.js",
+    "start": "next start",
     "export": "next export",
     "postinstall": "npx prisma generate"
   },
