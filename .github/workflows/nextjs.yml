@@ -2,12 +2,16 @@
 #
 # To get started with Next.js see: https://nextjs.org/docs/getting-started
 #
-name: Deploy Next.js site to Pages
+name: new page
 
 on:
   # Runs on pushes targeting the default branch
   push:
+<<<<<<< HEAD
     branches: ["master9"]
+=======
+    branches: ["main9"]
+>>>>>>> 9c481d545398cbb925eff0e7c212ed957a927cfa
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
