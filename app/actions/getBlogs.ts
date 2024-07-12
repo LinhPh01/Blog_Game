@@ -62,15 +62,15 @@ export default async function getBlogs() {
   }
 }
 
-async function testConnection() {
-  try {
-    const result = await prisma.blog.findMany();
-    console.log("Connection successful:", result);
-  } catch (error) {
-    console.error("Connection failed:", error);
-  } finally {
-    await prisma.$disconnect();
-  }
-}
+// async function testConnection() {
+//   try {
+//     const result = await prisma.blog.findMany();
+//     console.log("Connection successful:", result);
+//   } catch (error) {
+//     console.error("Connection failed:", error);
+//   } finally {
+//     await prisma.$disconnect();
+//   }
+// }
 
-testConnection();
+// testConnection();
