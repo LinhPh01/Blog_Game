@@ -14,8 +14,8 @@ export default async function Home() {
         <Welcome />
         <TitleBlog />
         <div className="flex flex-wrap justify-center ">
-          {blogs.map((item: any, index: any) => (
-            <Outstanding key={index} data={item} />
+          {blogs.map((item: any) => (
+            <Outstanding key={item.id} data={item} />
           ))}
         </div>
 
