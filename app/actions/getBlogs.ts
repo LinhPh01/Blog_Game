@@ -1,3 +1,4 @@
+import { Blog } from "@prisma/client";
 import prisma from "../lib/prismadb";
 
 // export interface IBlogParams {
@@ -8,7 +9,7 @@ import prisma from "../lib/prismadb";
 
 export default async function getBlogs() {
   try {
-    const blogs = await prisma.blog.findMany({
+    const blogs: Blog[] = await prisma.blog.findMany({
       orderBy: {
         createdAt: "desc",
       },
