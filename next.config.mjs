@@ -4,6 +4,9 @@ const nextConfig = {
   images: {
     domains: ["res.cloudinary.com"],
   },
+  images: {
+    unoptimized: true,
+  },
   typescript: {
     ignoreBuildErrors: true,
   },
