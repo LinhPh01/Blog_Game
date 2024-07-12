@@ -52,7 +52,6 @@ export default async function getBlogs() {
       createdAt: blog.createdAt.toISOString(),
     }));
 
-    console.log(SafeBlogs);
     return SafeBlogs;
   } catch (error) {
     console.error("Error fetching blogs:", error);
@@ -61,16 +60,4 @@ export default async function getBlogs() {
     await prisma.$disconnect();
   }
 }
-
-// async function testConnection() {
-//   try {
-//     const result = await prisma.blog.findMany();
-//     console.log("Connection successful:", result);
-//   } catch (error) {
-//     console.error("Connection failed:", error);
-//   } finally {
-//     await prisma.$disconnect();
-//   }
-// }
-
-// testConnection();
+// update nè
