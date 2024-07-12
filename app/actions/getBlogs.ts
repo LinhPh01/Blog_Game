@@ -16,7 +16,6 @@ export default async function getBlogs() {
     });
 
     const SafeBlogs = blogs.map((blog) => ({
-      // @ts-ignore
       ...blog,
       createdAt: blog.createdAt.toISOString(),
     }));
